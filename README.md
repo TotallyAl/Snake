@@ -1,1 +1,3 @@
 # Snake
+
+I made some mistake...
