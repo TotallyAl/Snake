@@ -1,5 +1,4 @@
 # Snake
 
-I made some mistake...
+A snake game I built while learning Python
 
-made some more.
