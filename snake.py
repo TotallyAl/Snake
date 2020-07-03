@@ -129,9 +129,7 @@ class MainGame:
         self.apple = Apple(display)
         self.background = pygame.image.load("graphics/bg0.png")
         self.background = pygame.transform.scale(self.background, (display.res_x, display.res_y))
-        #self.game_music = pygame.mixer.music.load("sounds/hotbutter-popcorn.mp3")
-        #pygame.mixer.music.play(self.game_music)
-        pygame.mixer.music.load("sounds/hotbutter-popcorn.mp3")
+        pygame.mixer.music.load("sounds/popcorn.ogg")
         pygame.mixer.music.play()
 
     def __del__(self):
