@@ -1,5 +1,5 @@
 #!python
-###!/Users/alexandre/opt/anaconda3/envs/Coding/bin/python
+
 import pygame
 from pygame.locals import *
 from math import pi
@@ -13,6 +13,9 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 WHITE = (255, 255, 255)
+
+class ExitException(BaseException):
+    pass
 
 class Display:
     res_x = 1200
@@ -164,7 +167,7 @@ class MainGame:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key in (pygame.K_q, pygame.K_ESCAPE):
-                    return False
+                    raise ExitException("Quitting from game")
                 if event.key == pygame.K_UP:
                     self.snake.direction_y = -1
                     self.snake.direction_x = 0
@@ -209,7 +212,7 @@ class MainMenu:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key in (pygame.K_q, pygame.K_ESCAPE):
-                    return False
+                    raise ExitException("Quitting from main menu")
                 if event.key == pygame.K_SPACE:
                     return False
         return True
@@ -224,14 +227,22 @@ scoreboard = Scoreboard(display, 1200, 800)
 while True:
     print("Main menu")
     menu = MainMenu(display)
-    while menu.loop(display) == True:
-        pass
+    try:
+        while menu.loop(display) == True:
+            pass
+    except ExitException as ex:
+        del menu
+        exit()
     del menu
 
     print("Starting Game")
     game = MainGame(display)
-    while game.loop(display) == True:
-        pass
+    try:
+        while game.loop(display) == True:
+            pass
+    except ExitException as ex:
+        del game
+        exit()
     del game
 
 scoreboard.store()
