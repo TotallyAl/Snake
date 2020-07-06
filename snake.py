@@ -1,4 +1,5 @@
-#!/Users/alexandre/opt/anaconda3/envs/Coding/bin/python
+#!python
+###!/Users/alexandre/opt/anaconda3/envs/Coding/bin/python
 import pygame
 from pygame.locals import *
 from math import pi

@@ -12,5 +12,5 @@ Snake depends on the following packages:
 if you use pip, install pygame like this:
 
 ```
-pip install -U pygame==2.0.0.dev6 --user
+pip install -U pygame==2.0.0.dev10
 ```
